@@ -1,6 +1,11 @@
 #include "Dvector.h"
 
 //implémentation des constructeurs et méthodes pour la question 1
+/**
+ * @brief Le constructeur par défaut.
+ * @param d: entier spécifiant la dimension du vecteur.
+ * @param inti: double spécifiant la valeur par défaut des coordonnées.
+ */
 Dvector::Dvector(int d, double init)
 {
     std::cout<<"Appel au constructeur normal"<<std::endl;
@@ -15,6 +20,10 @@ Dvector::Dvector(int d, double init)
         pCor[i] = init;
 }
 
+/**
+ * @brief Le destructeur. On désalloue seulement pCor si il a été
+ * initialisé.
+ */
 Dvector::~Dvector()
 {
     std::cout<<"Appel au destructeur"<<std::endl;
@@ -24,6 +33,11 @@ Dvector::~Dvector()
     }
 }
 
+/**
+ * @brief La fonction d'affichage.
+ * @param str: Le flux utilisé pour l'affichage, de type std::ostream&.
+ * Il s'agit d'une référence.
+ */
 void Dvector::display(std::ostream& str)
 {
     for(int i=0; i<dim; i++)
