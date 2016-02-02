@@ -36,6 +36,9 @@ constructor_normal_test.o:
 constructor_normal_test: constructor_normal_test.o $(OBJS)
 	$(CXX) $(CXXFLAGS) -o $@ $(OBJS) constructor_normal_test.o
 
+two_constructor_test: two_constructor_test.o $(OBJS)
+	$(CXX) $(CXXFLAGS) -o $@ $(OBJS) two_constructor_test.o
+
 
 clean:
 	rm *.o $(PROGS)

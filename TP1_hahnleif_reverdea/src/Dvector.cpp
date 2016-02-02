@@ -19,7 +19,9 @@ Dvector::Dvector(int d, double init)
     }
     pCor = new double[dim];
     for(int i=0; i<dim; i++)
+    {
         pCor[i] = init;
+    }
 }
 
 /**
@@ -42,6 +44,7 @@ Dvector::~Dvector()
  */
 void Dvector::display(std::ostream& str)
 {
+    std::cout<<"dimension dans display(): "<<dim<<std::endl;
     for(int i=0; i<dim; i++)
         str<<pCor[i]<<"\n";
 }
