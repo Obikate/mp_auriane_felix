@@ -12,16 +12,16 @@ int main()
     std::cout<<"dvec: "<<std::endl;
     dvec.display(std::cout);
 
-    Dvector dvec2(dvec);
-    std::cout<<"dvec2: "<<std::endl;
-    dvec2.display(std::cout);
-    std::cout<<"dvec2 après recopie: "<<std::endl;
-    dvec2.display(std::cout);
-    std::cout<<"fin du test"<<std::endl;
-
-    std::cout.precision(9);
-    Dvector dvec3("tp1_test1.txt");
-    dvec3.display(std::cout);
-    Dvector dvec4("tp1_test2.txt");
-    dvec4.display(std::cout);
+//    Dvector dvec2(dvec);
+//    std::cout<<"dvec2: "<<std::endl;
+//    dvec2.display(std::cout);
+//    std::cout<<"dvec2 après recopie: "<<std::endl;
+//    dvec2.display(std::cout);
+//    std::cout<<"fin du test"<<std::endl;
+//
+//    std::cout.precision(9);
+//    Dvector dvec3("tp1_test1.txt");
+//    dvec3.display(std::cout);
+//    Dvector dvec4("tp1_test2.txt");
+//    dvec4.display(std::cout);
 }

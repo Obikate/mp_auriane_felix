@@ -10,6 +10,8 @@ Dvector::Dvector(int d, double init)
 {
     std::cout<<"Appel au constructeur normal"<<std::endl;
     dim = d;
+    //si le constructeur est vide, alors on simule le constructeur
+    //"par défaut" en initialisant ses champs à 0 et NULL.
     if(dim==0)
     { 
         pCor = NULL;
@@ -45,21 +47,38 @@ void Dvector::display(std::ostream& str)
 }
 
 //implémentation des constructeurs et méthodes pour la question 2
-int Dvector::size()
+/**
+ * @brief La fonction accesseur pour la dimension du vecteur.
+ * @return Un entier constant.
+ */
+int Dvector::size(int catchError) const
 {
     return dim;
 }
 
-void Dvector::fillRandomly()
+/**
+ * @brief La fonction remplit remplit les coordonnées du vecteur selon
+ * une loi uniforme sur [0, 1] en utilisant la fonction random() de la
+ * bibliothèque "stdlib.h"
+ */
+void Dvector::fillRandomly(int catchError)
 {
+    //pour que la méthode renvoie "vraiment" des nouvelles valeurs à 
+    //chaque fois qu'on appelle la fonction, il faut initialiser le
+    //générateur de nombres aléatoires en semant une graine.
+    srand(time(NULL));
     for(int i=0; i<dim; i++)
         pCor[i] = (double)random()/(double)RAND_MAX;
 }
 
+/**
+ * @brief Le constructeur par copie appelé automatiquement.
+ */
 Dvector::Dvector(const Dvector & d)
 {
     std::cout<<"Appel au constructeur par recopie"<<std::endl;
-    dim = d.dim;
+    //on accède à la valeur d'un champ privé
+    dim = d.size();
     if(dim == 0)
         return ;
     pCor = new double[dim];
@@ -68,7 +87,14 @@ Dvector::Dvector(const Dvector & d)
         pCor[i] = d.pCor[i];
     }
 }
+
 //implémentation des constructeurs et méthodes pour la question 3
+/**
+ * @brief Le constructeur "par fichier". Recopie de tous les doubles se
+ * trouvant dans le fichier dans le tableau de l'objet à créer.
+ * @param str: une chaîne de caractères décrivant le chemin relatif du 
+ * fichier.
+ */
 Dvector::Dvector(std::string str)
 {
     std::cout<<"Appel au constructeur par fichier"<<std::endl;
@@ -82,7 +108,7 @@ Dvector::Dvector(std::string str)
         return ;
    }
    else {
-       //on parcourt le fichier
+       //on parcourt le fichier pour trouver le nombre d'éléments du fichier
        double tmp;
        while(file>>tmp)
            dim++;
@@ -90,9 +116,11 @@ Dvector::Dvector(std::string str)
        file.clear();
        file.seekg(0, std::ios::beg);
    }
+   //recopie des valeurs
    pCor = new double[dim];
    for(int i=0; i<dim; i++)
    {
        file>>pCor[i];
    }
+   file.close();
 }
