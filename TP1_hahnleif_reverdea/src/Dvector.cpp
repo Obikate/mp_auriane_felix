@@ -121,6 +121,12 @@ Dvector::Dvector(std::string str)
        file.clear();
        file.seekg(0, std::ios::beg);
    }
+   //on vérifie s'il s'agit d'un fichier vide
+   if(dim == 0)
+   {
+       pCor = NULL;
+       return ;
+   }
    //recopie des valeurs
    pCor = new double[dim];
    for(int i=0; i<dim; i++)
