@@ -1,44 +1,13 @@
-OBJS = Dvector.o 
-PROGS = test display_test size_test constructor_test constructor_normal_test
+PROGS=test_one test_size test_display test_constructor_normal test_q_two_one test_constructor_normal
 CXX = g++
 CXXFLAGS = -Wall -g
 
-$(OBJS):	
-	$(CXX) -c Dvector.cpp
+test_%: Dvector.o test_%.o 
+	$(CXX) $(CXXFLAGS) -o $@ $^
 
-test.o: 
-	$(CXX) -c test.cpp
-
-test: test.o $(OBJS)
-	$(CXX) $(CXXFLAGS) -o $@ $(OBJS) test.o
-
-display_test.o: 
-	$(CXX) -c display_test.cpp
-
-display_test: display_test.o $(OBJS)
-	$(CXX) $(CXXFLAGS) -o $@ $(OBJS) display_test.o
-
-constructor_test.o: 
-	$(CXX) -c constructor_test.cpp
-
-constructor_test: constructor_test.o $(OBJS)
-	$(CXX) $(CXXFLAGS) -o $@ $(OBJS) constructor_test.o
-
-size_test.o: 
-	$(CXX) -c size_test.cpp
-
-size_test: size_test.o $(OBJS)
-	$(CXX) $(CXXFLAGS) -o $@ $(OBJS) size_test.o
-
-constructor_normal_test.o: 
-	$(CXX) -c constructor_normal_test.cpp
-
-constructor_normal_test: constructor_normal_test.o $(OBJS)
-	$(CXX) $(CXXFLAGS) -o $@ $(OBJS) constructor_normal_test.o
-
-two_constructor_test: two_constructor_test.o $(OBJS)
-	$(CXX) $(CXXFLAGS) -o $@ $(OBJS) two_constructor_test.o
-
-
+.PHONY : clean
 clean:
-	rm *.o $(PROGS)
+	rm -f *.o $(PROGS)
+
+.PHONY : all
+all: $(PROGS)

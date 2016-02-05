@@ -34,6 +34,7 @@ Dvector::~Dvector()
     if(pCor != NULL)
     {
         delete [] pCor;
+        pCor = NULL;
     }
 }
 
@@ -44,9 +45,10 @@ Dvector::~Dvector()
  */
 void Dvector::display(std::ostream& str)
 {
-    std::cout<<"dimension dans display(): "<<dim<<std::endl;
     for(int i=0; i<dim; i++)
+    {
         str<<pCor[i]<<"\n";
+    }
 }
 
 //implémentation des constructeurs et méthodes pour la question 2
@@ -79,8 +81,8 @@ void Dvector::fillRandomly(int catchError)
  */
 Dvector::Dvector(const Dvector & d)
 {
-    std::cout<<"Appel au constructeur par recopie"<<std::endl;
     //on accède à la valeur d'un champ privé
+    std::cout<<"Appel au constructeur par recopie"<<std::endl;
     dim = d.size();
     if(dim == 0)
         return ;

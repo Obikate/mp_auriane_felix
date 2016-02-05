@@ -5,12 +5,12 @@
 
 int main()
 {
-    Dvector dvec(3, 2.3);
-    dvec.display(std::cout);
-    std::cout<<"Taille de dvec: "<<dvec.size()<<std::endl;
-    dvec.fillRandomly();
-    std::cout<<"dvec: "<<std::endl;
-    dvec.display(std::cout);
+//    Dvector dvec(1, 2.3);
+//    dvec.display(std::cout);
+//    std::cout<<"Taille de dvec: "<<dvec.size()<<std::endl;
+//    dvec.fillRandomly();
+//    std::cout<<"dvec: "<<std::endl;
+//    dvec.display(std::cout);
 
 //    Dvector dvec2(dvec);
 //    std::cout<<"dvec2: "<<std::endl;
@@ -24,4 +24,5 @@ int main()
 //    dvec3.display(std::cout);
 //    Dvector dvec4("tp1_test2.txt");
 //    dvec4.display(std::cout);
+    return 0;
 }
